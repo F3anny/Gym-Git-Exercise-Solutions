@@ -106,3 +106,54 @@ git commit -m "fix: resolve merge conflict between service-redesign and main"
 git push origin ft/service-redesign
 ```
 PR merged successfully into `main` after conflict resolution.
+## Bundle 3 - Exercise 1
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b ft/team-page
+
+
+git add team.html
+git commit -m "feat:add team page"
+git push -u origin ft/team-page
+```
+PR opened on GitHub: `ft/team-page` → `main`.
+
+```bash
+git checkout main
+git checkout -b ft/contact-page
+
+git checkout ft/team-page
+git log --oneline
+```
+Copied last commit hash on `ft/team-page`: `ee57d37fee0039e077097bb45c189d4ba1a8c749`
+
+```bash
+git checkout ft/contact-page
+git cherry-pick ee57d37fee0039e077097bb45c189d4ba1a8c749
+```
+Result: new commit `d2174a8` created on `ft/contact-page`, bringing in `team.html`.
+
+```bash
+git add contact.html
+git commit -m "feat: add contact page"
+git push -u origin ft/contact-page
+```
+PR opened on GitHub: `ft/contact-page` → `main`.
+
+```bash
+git checkout ft/contact-page
+git checkout -b ft/faq-page
+
+git add faq.html
+git commit -m "feat: add faq page"
+git push -u origin ft/faq-page
+```
+
+```bash
+git checkout ft/team-page
+git revert ee57d37fee0039e077097bb45c189d4ba1a8c749
+git push origin ft/team-page
+```
+Revert commit added on top of the original `feat:add team page` commit, removing `team.html` again. Pushed to the existing `ft/team-page` PR (updates automatically rather than creating a second PR for the same branch).
