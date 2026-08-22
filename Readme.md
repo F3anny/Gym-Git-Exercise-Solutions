@@ -157,3 +157,50 @@ git revert ee57d37fee0039e077097bb45c189d4ba1a8c749
 git push origin ft/team-page
 ```
 Revert commit added on top of the original `feat:add team page` commit, removing `team.html` again. Pushed to the existing `ft/team-page` PR (updates automatically rather than creating a second PR for the same branch).
+## Bundle 4 - Exercise 1
+
+```bash
+git checkout main
+git pull origin main
+```
+Created a new GitHub repo (`gym-git-copy`) via GitHub website.
+
+```bash
+git remote add git-copy https://github.com/F3anny/gym-git-copy.git
+git remote -v
+
+
+git add index.html
+git commit -m "feat: update home page"
+
+git push origin main
+git push git-copy main
+```
+
+## Bundle 4 - Exercise 2
+
+```bash
+git checkout main
+git checkout -b ft/footer
+
+git add index.html
+git commit -m "feat:changed content of main page"
+
+git add contact.html
+git commit -m "feat:changed content of contact page"
+
+git push origin ft/footer
+```
+PR opened on GitHub: `ft/footer` → `main`.
+
+```bash
+git checkout main
+git checkout -b ft/squashing
+
+git merge --squash ft/footer
+git add .
+git commit -m "feat:footer changes squashing"
+
+git push origin ft/squashing
+```
+PR opened on GitHub: `ft/squashing` → `main` — squash merge completed as a fast-forward since `main` had no new commits since `ft/footer` branched off.
