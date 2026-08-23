@@ -204,3 +204,29 @@ git commit -m "feat:footer changes squashing"
 git push origin ft/squashing
 ```
 PR opened on GitHub: `ft/squashing` → `main` — squash merge completed as a fast-forward since `main` had no new commits since `ft/footer` branched off.
+## Bundle 5 - Exercise 1
+
+On GitHub: Settings → Pages → Source: Deploy from a branch → Branch: `main` → Save
+
+Live URL generated: `https://f3anny.github.io/gym-git-basics/`
+
+Verified the link is publicly visible by opening it in an incognito browser window (not logged into GitHub).
+
+## Bundle 5 - Exercise 2
+
+Forked `https://github.com/TheGymRwanda/git-cafe-exercise` to `F3anny/git-cafe-exercise` via GitHub.
+
+```bash
+git clone https://github.com/F3anny/git-cafe-exercise.git
+cd git-cafe-exercise
+```
+
+Edited `index.html` — changed "Welcome to our place" to "Welcome to our restaurant"
+
+```bash
+git add index.html
+git commit -m "feat:changed content of main page"
+git push origin main
+```
+
+Opened a PR on GitHub from `F3anny/git-cafe-exercise:main` → `TheGymRwanda/git-cafe-exercise:main`. No conflicts with base branch — changes can be cleanly merged.
